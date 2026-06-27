@@ -33,25 +33,6 @@ This repository contains a MATLAB analysis pipeline (`fus_optical.m`) for compar
 
 Loading the file produces a single struct, `seedTrace`, holding the rawest ROI-mean seed traces (no filtering, no interpolation applied). The recording is ~200 s long.
 
-> *Embedded note:* "Rawest ROI-mean seed traces (no filter, no interp). Hb in µM, fUS = dPDI (CBV), Ca = a.u."
-
-### Signal fields
-
-| Field | Length | Sampling | Units | Meaning |
-|-------|--------|----------|-------|---------|
-| `fus` | 443 | fUS rate | a.u. (dPDI) | Functional ultrasound — cerebral blood volume (CBV) |
-| `hbo` | 1328 | optical rate | µM | Oxygenated hemoglobin |
-| `hbr` | 1328 | optical rate | µM | Deoxygenated hemoglobin |
-| `hbt` | 1328 | optical rate | µM | Total hemoglobin |
-| `ca`  | 1328 | optical rate | a.u. | Calcium (Ca²⁺) |
-
-### Time bases
-
-| Field | Length | Description |
-|-------|--------|-------------|
-| `t_fus` | 443 | Time vector for the fUS signal (~1.06 → 200.06 s) |
-| `t_opt` | 1328 | Time vector for the optical signals (~0.90 → 199.95 s) |
-
 ### `params` sub-struct
 
 | Field | Value | Description |
@@ -61,10 +42,6 @@ Loading the file produces a single struct, `seedTrace`, holding the rawest ROI-m
 | `fuswin` | 443 | fUS analysis window indices |
 | `optwin` | 1328 | Optical analysis window indices |
 | `twin` | 200 | Time window |
-
-Plus `roi` (the seed ROI index, = 6) and `info` (the description string above).
-
----
 
 ## Processing Pipeline
 
@@ -133,12 +110,6 @@ For the coherogram, optical signals are low-pass filtered (cutoff at the fUS fra
 ### Printing / fabrication notes
 - Files are **STL**, ready to slice and print.
 - Print the **head and its matching lid together** so tolerances and fit stay consistent — they are designed as a pair per probe.
-- Use the imaging head that matches your probe (Vermont vs. L22-14v); the two are **not interchangeable**.
 
----
 
-## Notes
 
-- Plots use a 10-color **colorblind-friendly** palette (Okabe–Ito style) defined inline as `cb10`.
-- Filtering is zero-phase (`filtfilt`), so no phase delay is introduced by the filters themselves.
-- Because each modality is filtered against its own Nyquist frequency, the fUS bandpass and optical bandpass are constructed as separate filter pairs.
