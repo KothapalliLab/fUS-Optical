@@ -1,4 +1,4 @@
-# Seed-Based fUS–Optical Multimodal Trace Analysis
+# fUS–Optical Multimodal Trace Analysis
 
 Code by **Shubham Mirg** — Kothapalli Lab
 
