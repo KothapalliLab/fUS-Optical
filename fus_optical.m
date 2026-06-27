@@ -2,7 +2,7 @@
 %%% Kothapalli Lab
 %%% Load baseline normalized roi averaged traces
 %% ---- Load ----
-load('seed_traces_raw.mat');          % -> seedTrace
+load('seed_traces_raw.mat');          % Sample seedTrace (Fig 1)
 t_fus = seedTrace.t_fus;
 t_opt = seedTrace.t_opt;
 frameRate_opt = seedTrace.params.frameRate_opt;
